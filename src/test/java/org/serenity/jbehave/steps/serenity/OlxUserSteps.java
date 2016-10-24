@@ -2,11 +2,9 @@ package org.serenity.jbehave.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.serenity.jbehave.pages.DictionaryPage;
 import org.serenity.jbehave.pages.OlxLoginPage;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 
 public class OlxUserSteps extends ScenarioSteps {
@@ -27,6 +25,6 @@ public class OlxUserSteps extends ScenarioSteps {
 
     @Step
     public void systemShowsError(final String error_message) {
-        assertThat(olxLoginPage.getLoginErrorMessage(), equals(error_message));
+        assertThat(olxLoginPage.getPasswordErrorMessage()).as("Message"," is not matched ").isEqualTo(error_message);
     }
 }

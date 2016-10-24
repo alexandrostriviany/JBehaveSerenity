@@ -3,7 +3,6 @@ package org.serenity.jbehave.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.PageObject;
 
 import static org.apache.commons.beanutils.locale.LocaleConvertUtils.convert;
@@ -17,8 +16,11 @@ public class OlxLoginPage extends PageObject {
     @FindBy(id = "userPass")
     private WebElementFacade userPassword;
 
-    @FindBy(id = "se_emailError")
-    private WebElementFacade loginErrorMessage;
+    @FindBy(xpath = ".//*[@id='se_emailError']/div/label")
+    private WebElementFacade passwordErrorMessage;
+
+    @FindBy(xpath = ".//*[@id='se_emailError']/div/label")
+    private WebElementFacade emailErrorMessage;
 
     @FindBy(id = "se_userLogin")
     private WebElementFacade loginButton;
@@ -35,7 +37,7 @@ public class OlxLoginPage extends PageObject {
         userPassword.type(pass);
     }
 
-    public String getLoginErrorMessage() {
-        return loginErrorMessage.getAttribute("error");
+    public String getPasswordErrorMessage() {
+        return passwordErrorMessage.getText();
     }
 }
