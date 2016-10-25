@@ -21,9 +21,29 @@ public class OlxLoginDefinitionSteps {
         olxUser.confirmInvalidLoginAndPassword(login,password);
     }
 
-    @Then("system shows error <$error_message>")
-    public void systemShowsError(final String error_message) {
-        olxUser.systemShowsError(error_message);
+    @When("user confirm invalid <$login>")
+    public void userConfirmInvalidEmail(final String email){
+        olxUser.confirmInvalidLogin(email);
+    }
+
+    @When("user click 'Войти' button")
+    public void userClickOnTheButton(){
+        olxUser.userClickOnTheButton();
+    }
+
+    @Then("system shows error <$pass_error> under 'password' field")
+    public void systemShowsPasswordError(final String pass_error) {
+        olxUser.systemShowsPasswordError(pass_error);
+    }
+
+    @Then("system shows error <$email_error> under 'email' field")
+    public void systemShowsEmailError(final String email_error) {
+        olxUser.systemShowsEmailError(email_error);
+    }
+
+    @Then("system shows several error messages <$errors>")
+    public void systemShowsSeveralErrorMessages(final String errors){
+        olxUser.allErrorMessages(errors);
     }
 
 }

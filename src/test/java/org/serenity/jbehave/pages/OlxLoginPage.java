@@ -16,16 +16,16 @@ public class OlxLoginPage extends PageObject {
     @FindBy(id = "userPass")
     private WebElementFacade userPassword;
 
-    @FindBy(xpath = ".//*[@id='se_emailError']/div/label")
+    @FindBy(xpath = "//*[@id='se_emailError']//*[@for='userPass']")
     private WebElementFacade passwordErrorMessage;
 
-    @FindBy(xpath = ".//*[@id='se_emailError']/div/label")
+    @FindBy(xpath = "//*[@id='se_emailError']//*[@for='userEmail']")
     private WebElementFacade emailErrorMessage;
 
-    @FindBy(id = "se_userLogin")
+    @FindBy(id = "se_userLogin") // //*[contains(text(),'Войти')]
     private WebElementFacade loginButton;
 
-    public void pressLoginButton(){
+    public void pressLoginButton() {
         loginButton.click();
     }
 
@@ -39,5 +39,9 @@ public class OlxLoginPage extends PageObject {
 
     public String getPasswordErrorMessage() {
         return passwordErrorMessage.getText();
+    }
+
+    public String getEmailErrorMessage() {
+        return emailErrorMessage.getText();
     }
 }
