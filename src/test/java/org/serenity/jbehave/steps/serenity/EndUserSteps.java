@@ -1,5 +1,6 @@
 package org.serenity.jbehave.steps.serenity;
 
+import org.serenity.jbehave.pages.AbstractPage;
 import org.serenity.jbehave.pages.DictionaryPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -8,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 
-public class EndUserSteps extends ScenarioSteps {
+public class EndUserSteps extends AbstractSteps {
 
     DictionaryPage dictionaryPage;
 

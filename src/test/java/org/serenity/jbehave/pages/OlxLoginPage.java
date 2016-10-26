@@ -8,7 +8,7 @@ import net.thucydides.core.pages.PageObject;
 import static org.apache.commons.beanutils.locale.LocaleConvertUtils.convert;
 
 @DefaultUrl("https://www.olx.ua/account/")
-public class OlxLoginPage extends PageObject {
+public class OlxLoginPage extends AbstractPage {
 
     @FindBy(id = "userEmail")
     private WebElementFacade userName;

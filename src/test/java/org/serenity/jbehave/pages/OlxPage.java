@@ -13,6 +13,6 @@ import java.util.List;
 import static ch.lambdaj.Lambda.convert;
 
 @DefaultUrl("https://www.olx.ua/")
-public class OlxPage extends PageObject {
+public class OlxPage extends AbstractPage {
 
 }

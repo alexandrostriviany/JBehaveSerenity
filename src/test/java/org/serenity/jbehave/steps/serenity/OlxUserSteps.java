@@ -1,12 +1,11 @@
 package org.serenity.jbehave.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.steps.ScenarioSteps;
 import org.serenity.jbehave.pages.OlxLoginPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class OlxUserSteps extends ScenarioSteps {
+public class OlxUserSteps extends AbstractSteps {
 
     OlxLoginPage olxLoginPage;
     private final String MESSAGE_IS_NOT_MATCHED = "Error message not matched";
@@ -17,8 +16,8 @@ public class OlxUserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void onTheOLXLoginPage() {
-        olxLoginPage.open();
+    public void onOlxLoginPage() {
+        olxLoginPage.openLink();
     }
 
     @Step
@@ -47,6 +46,7 @@ public class OlxUserSteps extends ScenarioSteps {
                 }
             }
         }
+        assertThat(expMess.equals(actMess));
         assertThat(counter).as("Equals not all messages").isEqualTo(actMess.length);
     }
 
