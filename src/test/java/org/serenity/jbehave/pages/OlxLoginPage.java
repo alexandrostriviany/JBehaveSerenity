@@ -25,9 +25,23 @@ public class OlxLoginPage extends AbstractPage {
     @FindBy(id = "se_userLogin") // //*[contains(text(),'Войти')]
     private WebElementFacade loginButton;
 
-    public void pressLoginButton() {
-        loginButton.click();
+    public WebElementFacade getLoginButton() {
+        return loginButton;
     }
+    public WebElementFacade getUserName() {
+        return userName;
+    }
+    public WebElementFacade getUserPassword() {
+        return userPassword;
+    }
+    public WebElementFacade getPasswordErrorMessage() {
+        return passwordErrorMessage;
+    }
+    public WebElementFacade getEmailErrorMessage() {
+        return emailErrorMessage;
+    }
+
+
 
     public void enterUserName(String email) {
         userName.type(email);
@@ -37,11 +51,11 @@ public class OlxLoginPage extends AbstractPage {
         userPassword.type(pass);
     }
 
-    public String getPasswordErrorMessage() {
-        return passwordErrorMessage.getText();
-    }
+//    public String getPasswordErrorMessage() {
+//        return passwordErrorMessage.getText();
+//    }
 
-    public String getEmailErrorMessage() {
-        return emailErrorMessage.getText();
-    }
+//    public String getEmailErrorMessage() {
+//        return emailErrorMessage.getText();
+//    }
 }

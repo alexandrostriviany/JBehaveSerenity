@@ -13,7 +13,7 @@ public class OlxLoginDefinitionSteps {
 
     @Given("user is on the OLX login page")
     public void userIsOnTheOLXLoginPage() {
-        olxUser.onOlxLoginPage();
+        olxUser.openLoginPage();
     }
 
     @When("user confirm invalid $login and $password")
@@ -28,7 +28,7 @@ public class OlxLoginDefinitionSteps {
 
     @When("user click 'Войти' button")
     public void userClickOnTheButton() {
-        olxUser.userClickOnTheButton();
+        olxUser.confirmTheForm();
     }
 
     @Then("system shows error $pass_error under 'password' field")
