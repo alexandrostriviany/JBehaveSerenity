@@ -15,4 +15,25 @@ import static ch.lambdaj.Lambda.convert;
 @DefaultUrl("https://www.olx.ua/")
 public class OlxPage extends AbstractPage {
 
+    @FindBy(id = "headerSearch")
+    private WebElementFacade headerSearch;
+
+    @FindBy(id = "submit-searchmain")
+    private WebElementFacade searchButton;
+
+    @FindBy(xpath = "//*[@class='marginright5 link linkWithHash detailsLink'][1]")
+    private WebElementFacade productsList;
+
+    public WebElementFacade getHeaderSearch() {
+        return headerSearch;
+    }
+
+    public WebElementFacade getSearchButton() {
+        return searchButton;
+    }
+
+    public WebElementFacade getProductsList() {
+        return productsList;
+    }
+
 }

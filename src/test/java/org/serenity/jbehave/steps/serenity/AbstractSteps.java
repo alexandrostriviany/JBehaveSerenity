@@ -7,4 +7,5 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public abstract class AbstractSteps extends ScenarioSteps {
 
+
 }

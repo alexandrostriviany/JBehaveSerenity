@@ -40,22 +40,5 @@ public class OlxLoginPage extends AbstractPage {
     public WebElementFacade getEmailErrorMessage() {
         return emailErrorMessage;
     }
-
-
-
-    public void enterUserName(String email) {
-        userName.type(email);
-    }
-
-    public void enterUserPassword(String pass) {
-        userPassword.type(pass);
-    }
-
-//    public String getPasswordErrorMessage() {
-//        return passwordErrorMessage.getText();
-//    }
-
-//    public String getEmailErrorMessage() {
-//        return emailErrorMessage.getText();
-//    }
+//   //*[@class='marginright5 link linkWithHash detailsLink']
 }

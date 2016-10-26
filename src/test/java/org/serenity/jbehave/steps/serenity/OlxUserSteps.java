@@ -1,15 +1,22 @@
 package org.serenity.jbehave.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
+import org.hamcrest.MatcherAssert;
 import org.jruby.ext.ffi.Type;
 import org.jruby.ir.operands.Array;
 import org.serenity.jbehave.pages.OlxLoginPage;
+import org.serenity.jbehave.pages.OlxPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasItem;
 
 public class OlxUserSteps extends AbstractSteps {
 
     OlxLoginPage olxLoginPage;
+
+    OlxPage olxPage;
+
     private final String MESSAGE_IS_NOT_MATCHED = "Error message not matched";
 
     @Step
@@ -72,4 +79,28 @@ public class OlxUserSteps extends AbstractSteps {
         enterEmail(email);
         confirmTheForm();
     }
+
+    @Step
+    public void openHomePage() {
+        olxPage.openLink();
+    }
+
+    @Step
+    public void userSearchProductByName(final String searchWord) {
+        olxPage.getHeaderSearch().type(searchWord);
+        olxPage.getSearchButton().click();
+    }
+
+    @Step
+    public void systemsResponceContainsTheSearchWord(final String searchWord) {
+        String finedWord = "";
+        String[] list = olxPage.getProductsList().getText().replace(",","").toLowerCase().split(" ");
+        for(String word:list){
+            if(word.equals(searchWord)){
+                finedWord = word;
+            }
+        }
+        assertThat(finedWord).as("Word not found").isEqualTo(searchWord.toLowerCase());
+    }
+
 }
