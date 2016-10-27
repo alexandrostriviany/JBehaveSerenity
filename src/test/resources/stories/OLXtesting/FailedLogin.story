@@ -5,6 +5,7 @@ As a system
 I want to check user credentials
 So that I can to prevent intruders
 
+
 Scenario: Scenario 1 - User enters invalid name and password
 Given user is on the OLX login page
 When user confirm invalid 'login' and 'password'

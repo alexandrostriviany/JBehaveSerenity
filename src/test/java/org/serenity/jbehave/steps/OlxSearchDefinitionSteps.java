@@ -27,4 +27,9 @@ public class OlxSearchDefinitionSteps {
     public void systemsResponceContainsTheSearchWord(final String searchName){
         olxUser.systemsResponceContainsTheSearchWord(searchName);
     }
+
+    @Then("system's responce contains five top-ads")
+    public void systemsResponceContainsFiveTopAds(){
+        olxUser.systemsResponceContainsFiveTopAds(5);
+    }
 }

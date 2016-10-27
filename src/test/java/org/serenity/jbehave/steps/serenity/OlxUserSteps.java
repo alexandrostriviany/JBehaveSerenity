@@ -1,20 +1,14 @@
 package org.serenity.jbehave.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
-import org.hamcrest.MatcherAssert;
-import org.jruby.ext.ffi.Type;
-import org.jruby.ir.operands.Array;
 import org.serenity.jbehave.pages.OlxLoginPage;
 import org.serenity.jbehave.pages.OlxPage;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasItem;
+
 
 public class OlxUserSteps extends AbstractSteps {
 
@@ -95,5 +89,8 @@ public class OlxUserSteps extends AbstractSteps {
         assertThat(olxPage.getProductsList().getText().replace(",", "").toLowerCase()).contains(searchWord);
     }
 
-
+    @Step
+    public void systemsResponceContainsFiveTopAds(int count) {
+        assertThat(olxPage.getCountOfTopAds()).isEqualTo(count);
+    }
 }
