@@ -16,7 +16,7 @@ public class OlxLoginDefinitionSteps {
         olxUser.openLoginPage();
     }
 
-    @When("user confirm invalid $login and $password")
+    @When("user confirm invalid '$login' and '$password'")
     public void userConfirmInvalidLoginAndPassword(final String login, final String password) {
         olxUser.confirmInvalidLoginAndPassword(login, password);
     }
@@ -41,7 +41,7 @@ public class OlxLoginDefinitionSteps {
         olxUser.systemShowsEmailError(email_error);
     }
 
-    @Then("system shows several error messages $errors")
+    @Then("system shows several error messages '$errors'")
     public void systemShowsSeveralErrorMessages(final String errors) {
         olxUser.allErrorMessages(errors);
     }

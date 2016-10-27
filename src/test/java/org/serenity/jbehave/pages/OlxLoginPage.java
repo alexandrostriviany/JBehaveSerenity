@@ -4,6 +4,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static org.apache.commons.beanutils.locale.LocaleConvertUtils.convert;
 
@@ -25,6 +29,7 @@ public class OlxLoginPage extends AbstractPage {
     @FindBy(id = "se_userLogin") // //*[contains(text(),'Войти')]
     private WebElementFacade loginButton;
 
+
     public WebElementFacade getLoginButton() {
         return loginButton;
     }
@@ -40,5 +45,5 @@ public class OlxLoginPage extends AbstractPage {
     public WebElementFacade getEmailErrorMessage() {
         return emailErrorMessage;
     }
-//   //*[@class='marginright5 link linkWithHash detailsLink']
+
 }

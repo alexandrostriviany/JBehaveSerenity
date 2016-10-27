@@ -7,6 +7,11 @@ import org.jruby.ir.operands.Array;
 import org.serenity.jbehave.pages.OlxLoginPage;
 import org.serenity.jbehave.pages.OlxPage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
@@ -54,19 +59,13 @@ public class OlxUserSteps extends AbstractSteps {
 
     @Step
     public void allErrorMessages(final String messages) {
-        int counter = 0;
-        String[] expMess = messages.split(",");
-        String[] actMess = (olxLoginPage.getEmailErrorMessage().getText() + ","
-                + olxLoginPage.getPasswordErrorMessage().getText()).split(",");
-        if (expMess.length == actMess.length) {
-            for (String message : expMess) {
-                int i = 0;
-                if (message.equals(actMess[i])) {
-                    counter++;
-                }
-            }
-        }
-        assertThat(counter).as("Equals not all messages").isEqualTo(actMess.length);
+        List<String> actualMessages = new ArrayList<>();
+        actualMessages.add(olxLoginPage.getEmailErrorMessage().getText());
+        actualMessages.add(olxLoginPage.getPasswordErrorMessage().getText());
+        List<String> expectedMessages = Arrays.asList(messages.split(","));
+        Collections.sort(actualMessages);
+        Collections.sort(expectedMessages);
+        assertThat(actualMessages).as("Equals not all messages").isEqualTo(expectedMessages);
     }
 
     @Step
@@ -93,14 +92,8 @@ public class OlxUserSteps extends AbstractSteps {
 
     @Step
     public void systemsResponceContainsTheSearchWord(final String searchWord) {
-        String finedWord = "";
-        String[] list = olxPage.getProductsList().getText().replace(",","").toLowerCase().split(" ");
-        for(String word:list){
-            if(word.equals(searchWord)){
-                finedWord = word;
-            }
-        }
-        assertThat(finedWord).as("Word not found").isEqualTo(searchWord.toLowerCase());
+        assertThat(olxPage.getProductsList().getText().replace(",", "").toLowerCase()).contains(searchWord);
     }
+
 
 }
