@@ -13,23 +13,28 @@ public class OlxSearchDefinitionSteps {
     @Steps
     OlxUserSteps olxUser;
 
-    @Given ("user on the OLX home page")
-    public void userOnTheOlxHomePage(){
+    @Given("user on the OLX home page")
+    public void userOnTheOlxHomePage() {
         olxUser.openHomePage();
     }
 
+    @Then("user sees $searchWord in the list of normal-ads")
+    public void userSeesSearchWordInTheListOfNormalAds (final String searchWord) {
+        olxUser.findeSearchWordInTheListOfNormalAds(searchWord);
+    }
+
     @When("user search product by name $searchName")
-    public void userSearchProductByName(final String searchName){
+    public void userSearchProductByName(final String searchName) {
         olxUser.userSearchProductByName(searchName);
     }
 
     @Then("system's responce contains the search word $searchName")
-    public void systemsResponceContainsTheSearchWord(final String searchName){
+    public void systemsResponceContainsTheSearchWord(final String searchName) {
         olxUser.systemsResponceContainsTheSearchWord(searchName);
     }
 
     @Then("system's responce contains five top-ads")
-    public void systemsResponceContainsFiveTopAds(){
+    public void systemsResponceContainsFiveTopAds() {
         olxUser.systemsResponceContainsFiveTopAds(5);
     }
 }

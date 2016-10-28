@@ -1,5 +1,6 @@
 package org.serenity.jbehave.steps.serenity;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.serenity.jbehave.pages.OlxLoginPage;
 import org.serenity.jbehave.pages.OlxPage;
@@ -8,7 +9,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 public class OlxUserSteps extends AbstractSteps {
 
@@ -90,7 +90,21 @@ public class OlxUserSteps extends AbstractSteps {
     }
 
     @Step
+    public void findeSearchWordInTheListOfNormalAds(final String searchWord) {
+        List<WebElementFacade> list = olxPage.getNormalAdsTitle();
+        boolean found = false;
+        for (WebElementFacade a : list) {
+            if (a.getText().toLowerCase().contains(searchWord.toLowerCase())) {
+                found = true;
+                break;
+            }
+        }
+        assertThat(found).as("Product with searched name not found").isTrue();
+    }
+
+    @Step
     public void systemsResponceContainsFiveTopAds(int count) {
         assertThat(olxPage.getCountOfTopAds()).isEqualTo(count);
     }
+
 }
